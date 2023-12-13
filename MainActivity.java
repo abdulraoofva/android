@@ -1,38 +1,39 @@
-package com.example.toggle;
-
-import androidx.appcompat.app.AppCompatActivity;
+package com.example.spinner;
 
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.Toast;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
+import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
-
+    String[] names = {"values1", "values2", "values3", "value4", "value5"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        ImageView view1=findViewById(R.id.img1);
-        ImageView view2=findViewById(R.id.img2);
-        ImageView like=findViewById(R.id.like);
-        ImageView msg=findViewById(R.id.msg);
-        ImageView like1=findViewById(R.id.like1);
-        ImageView msg1=findViewById(R.id.msg1);
-        like.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(MainActivity.this,"liked",Toast.LENGTH_LONG).show();
-            }
-        });
 
-        msg.setOnClickListener(new View.OnClickListener() {
+        Spinner spinner = findViewById(R.id.sp1);
+        TextView textView = findViewById(R.id.t1);
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, names);
+        spinner.setAdapter(adapter);
+
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
-            public void onClick(View view) {
-                Toast.makeText(MainActivity.this,"message",Toast.LENGTH_LONG).show();
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                textView.setText(names[i]);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
             }
         });
     }
-
 }
+
