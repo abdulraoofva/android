@@ -1,38 +1,50 @@
-package com.example.toggleimg;
-
+package com.example.uicontrols;
 import androidx.appcompat.app.AppCompatActivity;
-
-import android.os.Bundle;
-
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ImageView;
+import android.widget.Toast;
+import android.widget.Button;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
-    ImageView i1,i2;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        i1=(ImageView) findViewById(R.id.imageView1);
-        i2=(ImageView) findViewById(R.id.imageView2);
-        i1.setOnClickListener(this);
-        i2.setOnClickListener(this);
-    }
 
-    @Override
-    public void onClick(View v) {
-        if(v.getId()==R.id.imageView1)
-        {
-            i1.setVisibility(v.GONE);
-            i2.setVisibility(v.VISIBLE);
+
+    public class MainActivity extends AppCompatActivity {
+
+        @Override
+        protected void onCreate(Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+            setContentView(R.layout.activity_main);
         }
-        else
-        {
 
-            i2.setVisibility(v.GONE);
-            i1.setVisibility(v.VISIBLE);
+        // This method is called when the button with onClick="onDigitClick" is clicked.
+        public void onDigitClick(View view) {
+            Button button = (Button) view;
+            String buttonText = button.getText().toString();
+            Toast.makeText(this, "linearlayout " + buttonText + " clicked", Toast.LENGTH_SHORT).show();
+        }
+        public void onGrid(View view) {
+            Button button = (Button) view;
+            String buttonText = button.getText().toString();
+            Toast.makeText(this, "Grid " + buttonText + " clicked", Toast.LENGTH_SHORT).show();
+        }
+        public void onRelative(View view) {
+            Button button = (Button) view;
+            String buttonText = button.getText().toString();
+            Toast.makeText(this, "Relative " + buttonText + " clicked", Toast.LENGTH_SHORT).show();
+        }
+        public void onTable(View view) {
+            Button button = (Button) view;
+            String buttonText = button.getText().toString();
+            Toast.makeText(this, "table " + buttonText + " clicked", Toast.LENGTH_SHORT).show();
+        }
+        public void onFrame(View view) {
+            Button button = (Button) view;
+            String buttonText = button.getText().toString();
+            Toast.makeText(this, "frame " + buttonText + " clicked", Toast.LENGTH_SHORT).show();
+        }
+        public void onconstrain(View view) {
+            Button button = (Button) view;
+            String buttonText = button.getText().toString();
+            Toast.makeText(this, "constrain " + buttonText + " clicked", Toast.LENGTH_SHORT).show();
         }
     }
-}
